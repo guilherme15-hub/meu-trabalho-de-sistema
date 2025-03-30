@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitações</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <style>
+        /* Estilo para a lista de solicitações */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #f1f1f1;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        ul li strong {
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Solicitações</h1>
+        </header>
+        <section>
+            <h2>Lista de Solicitações</h2>
+            <ul>
+                <li><strong>Solicitação #1:</strong> Consulta para o animal "Rex" - Status: Aguardando aprovação</li>
+                <li><strong>Solicitação #2:</strong> Exame de sangue para o animal "Mimi" - Status: Concluído</li>
+                <li><strong>Solicitação #3:</strong> Banho e tosa para o animal "Bobby" - Status: Em andamento</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Enviar Nova Solicitação</h2>
+            <form action="/enviar-solicitacao" method="POST">
+                <label for="tipo">Tipo de Solicitação:</label>
+                <select id="tipo" name="tipo" required>
+                    <option value="consulta">Consulta</option>
+                    <option value="exame">Exame</option>
+                    <option value="banho-tosa">Banho e Tosa</option>
+                    <option value="outro">Outro</option>
+                </select>
+
+                <label for="animal">Nome do Animal:</label>
+                <input type="text" id="animal" name="animal" placeholder="Digite o nome do animal" required>
+
+                <label for="descricao">Descrição:</label>
+                <textarea id="descricao" name="descricao" placeholder="Descreva a solicitação" rows="5" required></textarea>
+
+                <button type="submit">Enviar Solicitação</button>
+            </form>
+        </section>
+    </main>
+    <script>
+        const express = require('express');
+        const app = express();
+
+        app.use(express.urlencoded({ extended: true }));
+
+        app.post('/enviar-solicitacao', (req, res) => {
+            const { tipo, animal, descricao } = req.body;
+            // Salve a solicitação no banco de dados
+            res.redirect('/solicitacoes'); // Redirecione para a página de solicitações
+        });
+    </script>
+    <?php
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $tipo = $_POST['tipo'];
+        $animal = $_POST['animal'];
+        $descricao = $_POST['descricao'];
+        // Salve a solicitação no banco de dados
+        header('Location: solicitacoes.html');
+        exit();
+    }
+    ?>
+</body>
+</html>
