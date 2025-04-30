@@ -1,0 +1,87 @@
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 10px;
+    box-sizing: border-box;
+}
+h1 {
+    font-family: 'Lucida Handwriting', cursive;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(90deg, #f77737, #e1306c, #bc2a8d, #5851db);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: colorChange 3s infinite;
+}
+p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+.highlight {
+    color: #f77737;
+}
+.btn {
+    background-color: #0095f6;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: transform 0.3s, background-color 0.3s;
+}
+.btn:hover {
+    background-color: #007bb5;
+    transform: scale(1.1);
+}
+a {
+    color: #0095f6;
+    text-decoration: none;
+}
+footer {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    color: #aaa;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    p {
+        font-size: 1rem;
+    }
+    .btn {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+    }
+    p {
+        font-size: 0.9rem;
+    }
+    .btn {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+}
+
+/* Animação no título */
+@keyframes colorChange {
+    0% { background-position: 0%; }
+    100% { background-position: 100%; }
